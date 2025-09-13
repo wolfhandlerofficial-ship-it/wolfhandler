@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Wolf Handler — Social Media Management & Creative Hiring</title>
+  <meta name="description" content="Hire Wolf Handler for end-to-end social media management. Book creative talent for your brand. Simple, fast, results-driven." />
+  <meta property="og:title" content="Wolf Handler — Social Media Management & Creative Hiring" />
+  <meta property="og:description" content="Promotion-first landing page. Hire us or book artists for your brand." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#0d0d0d" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root{
+      --bg:#0b0b0f;
+      --card:#13131a;
+      --text:#f5f7fb;
+      --muted:#a8b0c6;
+      --accent:#AA38FF;
+      --accent-2:#1FB6FF;
+      --gold:#FFD700;
+    }
+    html,body{height:100%; scroll-behavior:smooth}
+    body{font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:radial-gradient(1200px 600px at 90% -10%, rgba(31,182,255,.12), transparent 60%), radial-gradient(1000px 500px at -10% 10%, rgba(170,56,255,.12), transparent 60%), var(--bg); color:var(--text)}
+    .glass{background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03)); border:1px solid rgba(255,255,255,.08); box-shadow:0 10px 40px rgba(0,0,0,.35); backdrop-filter: blur(8px)}
+    .glow{box-shadow:0 0 32px rgba(170,56,255,.35), inset 0 0 24px rgba(31,182,255,.15)}
+    .btn{transition:transform .3s ease, box-shadow .3s ease}
+    .btn:hover{transform:translateY(-4px) scale(1.03)}
+    /* Animations */
+    .fade-up{opacity:0; transform:translateY(30px); transition:all .8s ease-out}
+    .fade-up.show{opacity:1; transform:translateY(0)}
+    .fade-in{opacity:0; transition:opacity .9s ease-in-out}
+    .fade-in.show{opacity:1}
+    .zoom-in{opacity:0; transform:scale(.9); transition:all .7s ease-out}
+    .zoom-in.show{opacity:1; transform:scale(1)}
+    .slide-left{opacity:0; transform:translateX(-40px); transition:all .8s ease-out}
+    .slide-left.show{opacity:1; transform:translateX(0)}
+    .slide-right{opacity:0; transform:translateX(40px); transition:all .8s ease-out}
+    .slide-right.show{opacity:1; transform:translateX(0)}
+    /* Offset anchors for fixed header */
+    section{scroll-margin-top:96px;}
+    /* Active nav highlight */
+    .nav a.active{color:var(--accent-2); position:relative}
+    .nav a.active::after{content:""; position:absolute; left:0; right:0; bottom:-8px; height:2px; background:linear-gradient(90deg,var(--accent),var(--accent-2)); border-radius:2px}
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="px-6 md:px-10 py-4 fade-in fixed top-0 left-0 w-full bg-[var(--bg)]/90 backdrop-blur z-50">
+    <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
+      <a href="#home" class="flex items-center gap-3 slide-left">
+        <img src="logo.png" alt="Wolf Handler Logo" class="w-10 h-10 object-contain" />
+        <div>
+          <p class="text-lg font-extrabold tracking-tight">Wolf Handler</p>
+          <p class="text-xs text-[color:var(--muted)] -mt-1">Social Media Command</p>
+        </div>
+      </a>
+      <nav class="nav hidden md:flex items-center gap-6 text-sm slide-right">
+        <a href="#services" class="hover:text-[color:var(--accent-2)]">What We Do</a>
+        <a href="#process" class="hover:text-[color:var(--accent-2)]">How It Works</a>
+        <a href="#hire" class="hover:text-[color:var(--accent-2)]">Hire Artists</a>
+        <a href="#contact" class="px-4 py-2 rounded-xl glass glow btn">Contact</a>
+      </nav>
+      <a href="#contact" class="md:hidden px-4 py-2 rounded-xl glass glow btn">Contact</a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section id="home" class="px-6 md:px-10 pt-28">
+    <div class="max-w-7xl mx-auto text-center zoom-in">
+      <h1 class="text-4xl md:text-6xl font-extrabold leading-tight">We grow your brand’s reach, <span class="text-transparent bg-clip-text bg-gradient-to-r from-[var(--accent)] via-[var(--accent-2)] to-white">one post at a time.</span></h1>
+      <p class="mt-5 text-[color:var(--muted)] md:text-lg">We’re a promotion-first studio. Book us for end-to-end social media management, or hire from our curated network of artists for your brand. Results in weeks, not months.</p>
+      <div class="mt-7 flex flex-wrap gap-3 justify-center">
+        <a href="#contact" class="btn px-5 py-3 rounded-xl glow glass font-semibold">Get in touch</a>
+        <a href="#hire" class="btn px-5 py-3 rounded-xl border border-white/15 font-semibold">Hire artists</a>
+      </div>
+      <div class="mt-6 text-sm text-[color:var(--muted)]">Email us anytime: <a class="underline hover:text-[color:var(--accent-2)]" href="mailto:wolfhandlerofficial@gmail.com">wolfhandlerofficial@gmail.com</a></div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="services" class="px-6 md:px-10 py-16 fade-up">
+    <div class="max-w-7xl mx-auto text-center slide-left">
+      <h2 class="text-3xl md:text-4xl font-extrabold">Our Packages</h2>
+      <p class="mt-3 text-[color:var(--muted)] max-w-2xl mx-auto">Choose the package that fits your growth stage. Simple, transparent, and effective.</p>
+    </div>
+    <div class="mt-8 grid grid-auto gap-5 text-left">
+      <article class="glass rounded-2xl p-6 fade-up">
+        <h3 class="text-xl font-bold">Starter: Presence</h3>
+        <p class="mt-2 text-sm text-[color:var(--muted)]">Consistent posting & brand hygiene across Instagram, X, LinkedIn, Facebook.</p>
+        <ul class="mt-4 text-sm list-disc pl-5 space-y-1 text-[color:var(--muted)]">
+          <li>12 posts + 12 stories / month</li>
+          <li>Basic reels (4/mo)</li>
+          <li>Captioning & hashtag stacks</li>
+        </ul>
+      </article>
+      <article class="glass rounded-2xl p-6 fade-up">
+        <h3 class="text-xl font-bold">Growth: Momentum</h3>
+        <p class="mt-2 text-sm text-[color:var(--muted)]">Editorial calendar, A/B creative, light paid boosts.</p>
+        <ul class="mt-4 text-sm list-disc pl-5 space-y-1 text-[color:var(--muted)]">
+          <li>16 posts + 16 stories / month</li>
+          <li>Pro reels (8/mo) + thumbnails</li>
+          <li>Monthly insights report</li>
+        </ul>
+      </article>
+      <article class="glass rounded-2xl p-6 fade-up">
+        <h3 class="text-xl font-bold">Scale: Command</h3>
+        <p class="mt-2 text-sm text-[color:var(--muted)]">Always-on content engine with performance targets.</p>
+        <ul class="mt-4 text-sm list-disc pl-5 space-y-1 text-[color:var(--muted)]">
+          <li>Daily posts + story packs</li>
+          <li>Reels factory & motion design</li>
+          <li>Ad ops & influencer collabs</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <!-- Process -->
+  <section id="process" class="px-6 md:px-10 py-16 fade-up">
+    <div class="max-w-7xl mx-auto text-center slide-right">
+      <h2 class="text-3xl md:text-4xl font-extrabold">How It Works</h2>
+    </div>
+    <div class="mt-8 grid grid-auto gap-5 text-left">
+      <div class="glass rounded-2xl p-6 slide-left">
+        <p class="text-sm text-[color:var(--muted)]">Step 1</p>
+        <h3 class="text-xl font-bold mt-1">Discovery Call (20 mins)</h3>
+        <p class="mt-2 text-[color:var(--muted)]">Tell us your goals. We align on scope, target audience, and tone.</p>
+      </div>
+      <div class="glass rounded-2xl p-6 fade-up">
+        <p class="text-sm text-[color:var(--muted)]">Step 2</p>
+        <h3 class="text-xl font-bold mt-1">Content Sprint</h3>
+        <p class="mt-2 text-[color:var(--muted)]">We build a quick styleframe + a 2-week content plan for approval.</p>
+      </div>
+      <div class="glass rounded-2xl p-6 slide-right">
+        <p class="text-sm text-[color:var(--muted)]">Step 3</p>
+        <h3 class="text-xl font-bold mt-1">Launch & Iterate</h3>
+        <p class="mt-2 text-[color:var(--muted)]">Publish, track, and optimize. You get weekly updates and a monthly report.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Hire Artists -->
+  <section id="hire" class="px-6 md:px-10 py-16 fade-up">
+    <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-10 items-start">
+      <div class="slide-left">
+        <h2 class="text-3xl md:text-4xl font-extrabold">Hire artists from our network</h2>
+        <p class="mt-3 text-[color:var(--muted)]">Need extra hands for a campaign? We place vetted designers, editors, motion artists, writers, and community managers on flexible monthly retainers.</p>
+        <ul class="mt-4 space-y-2 text-[color:var(--muted)] list-disc pl-5">
+          <li>Flexible 40/80/120-hour blocks</li>
+          <li>NDA and IP transfer included</li>
+          <li>Replace or scale up anytime</li>
+        </ul>
+        <div class="mt-6 flex flex-wrap gap-3">
+          <a href="https://linktr.ee/wolfhandler?fbclid=PAdGRleAMyauhleHRuA2FlbQIxMQABpyTmDgr-o-FO46ztoo2AAY9J9DpjrwpcgIffePFSDiFE-_-DDlnEKTvUiSU-_aem_gMQJUERgZWzKWdlvR007XQ" class="btn px-5 py-3 rounded-xl glass glow font-semibold" target="_blank" rel="noopener">Request profiles</a>
+          <a href="https://www.instagram.com/wolfhandler/?hl=en" class="btn px-5 py-3 rounded-xl border border-white/15 font-semibold" target="_blank" rel="noopener">Instagram</a>
+        </div>
+      </div>
+      <form class="glass rounded-2xl p-6 slide-right" id="hireForm">
+        <h3 class="text-xl font-bold">Tell us what you need</h3>
+        <p class="mt-1 text-sm text-[color:var(--muted)]">We’ll reply within 24 hours with 2–3 profile options.</p>
+        <div class="mt-5 grid gap-4">
+          <label class="block text-sm">Your name
+            <input required class="mt-1 w-full rounded-xl bg-[#0f0f14] border border-white/10 px-4 py-3" name="name" placeholder="Jane from Acme Co." />
+          </label>
+          <label class="block text-sm">Work email
+            <input type="email" required class="mt-1 w-full rounded-xl bg-[#0f0f14] border border-white/10 px-4 py-3" name="email" placeholder="jane@acme.com" />
+          </label>
+          <label class="block text-sm">Role needed
+            <select class="mt-1 w-full rounded-xl bg-[#0f0f14] border border-white/10 px-4 py-3" name="role">
+              <option>Designer</option>
+              <option>Video Editor</option>
+              <option>Motion Designer</option>
+              <option>Copywriter</option>
+              <option>Community Manager</option>
+            </select>
+          </label>
+          <label class="block text-sm">Hours / month
+            <input class="mt-1 w-full rounded-xl bg-[#0f0f14] border border-white/10 px-4 py-3" name="hours" placeholder="80" />
+          </label>
+          <label class="block text-sm">Brief
+            <textarea rows="4" class="mt-1 w-full rounded-xl bg-[#0f0f14] border border-white/10 px-4 py-3" name="brief" placeholder="Tell us about your brand and the scope…"></textarea>
+          </label>
+          <button class="btn px-5 py-3 rounded-xl glass glow font-semibold" type="submit">Send request</button>
+          <p class="text-xs text-[color:var(--muted)]">Or email us directly at <a class="underline" href="mailto:wolfhandlerofficial@gmail.com?subject=Hire%20Artist%20Request">wolfhandlerofficial@gmail.com</a></p>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="px-6 md:px-10 py-16 fade-up">
+    <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-10 items-start">
+      <div class="slide-left">
+        <h2 class="text-3xl md:text-4xl font-extrabold">Let’s start with your goal</h2>
+        <p class="mt-3 text-[color:var(--muted)]">Email us at <a class="underline" href="mailto:wolfhandlerofficial@gmail.com">wolfhandlerofficial@gmail.com</a> or use the form. We’ll reply within a day.</p>
+        <div class="mt-6 text-sm">
+          <div>📍 India • Remote worldwide</div>
+          <div class="mt-1">🕘 Mon–Sat, 9:00–21:00 IST</div>
+        </div>
+      </div>
+      <form class="grid gap-4 slide-right" id="contactForm">
+        <label class="block text-sm">Full name
+          <input required class="mt-1 w-full rounded-xl bg-[#0f0f14] border border-white/10 px-4 py-3" name="name" placeholder="Your name" />
+        </label>
+        <label class="block text-sm">Email
+          <input type="email" required class="mt-1 w-full rounded-xl bg-[#0f0f14] border border-white/10 px-4 py-3" name="email" placeholder="you@company.com" />
+        </label>
+        <label class="block text-sm">Company / Brand
+          <input class="mt-1 w-full rounded-xl bg-[#0f0f14] border border-white/10 px-4 py-3" name="company" placeholder="Company name" />
+        </label>
+        <label class="block text-sm">What do you need?
+          <textarea rows="4" class="mt-1 w-full rounded-xl bg-[#0f0f14] border border-white/10 px-4 py-3" name="message" placeholder="Social media management, monthly content, campaign launch, etc."></textarea>
+        </label>
+        <button class="btn px-5 py-3 rounded-xl glass glow font-semibold" type="submit">Send message</button>
+        <p class="text-xs text-[color:var(--muted)]">Submitting will open your email app with a pre-filled draft.</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="px-6 md:px-10 py-10 text-center text-[color:var(--muted)] fade-in">
+    © <span id="year"></span> Wolf Handler. All rights reserved.
+  </footer>
+
+  <script>
+    // Copyright year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // IntersectionObserver for animations
+    const observer = new IntersectionObserver((entries)=>{
+      entries.forEach((entry)=>{
+        if(entry.isIntersecting){ entry.target.classList.add('show'); }
+      });
+    }, {threshold: 0.12});
+
+    document.querySelectorAll('.fade-up, .fade-in, .zoom-in, .slide-left, .slide-right').forEach(el=>observer.observe(el));
+
+    // Active nav highlight on scroll
+    const sections = ['home','services','process','hire','contact'];
+    const navLinks = Array.from(document.querySelectorAll('.nav a'));
+    function setActive(){
+      let fromTop = window.scrollY + 110; // header offset
+      let current = sections[0];
+      sections.forEach(id=>{
+        const s = document.getElementById(id);
+        if(s && s.offsetTop <= fromTop) current = id;
+      });
+      navLinks.forEach(a=>{
+        const href = a.getAttribute('href').replace('#','');
+        if(href === current){ a.classList.add('active'); } else { a.classList.remove('active'); }
+      });
+    }
+    setActive();
+    window.addEventListener('scroll', setActive);
+
+    // Turn forms into Gmail drafts (mailto)
+    function formToMailto(formId, subjectPrefix){
+      const form = document.getElementById(formId);
+      if(!form) return;
+      form.addEventListener('submit', (e)=>{
+        e.preventDefault();
+        const data = new FormData(form);
+        const lines=[];
+        data.forEach((v,k)=>{ if(v) lines.push(`${k}: ${v}`); });
+        const subject = encodeURIComponent(subjectPrefix + ' — ' + (data.get('name')||'Client'));
+        const body = encodeURIComponent(lines.join('\n'));
+        const mail = `mailto:wolfhandlerofficial@gmail.com?subject=${subject}&body=${body}`;
+        window.location.href = mail;
+      });
+    }
+    formToMailto('hireForm','Hire Artist Request');
+    formToMailto('contactForm','New Project Inquiry');
+  </script>
+</body>
+</html>
