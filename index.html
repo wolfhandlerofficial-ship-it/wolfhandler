@@ -387,7 +387,7 @@
 
       try{
         const limit = 3;
-        const res = await fetch(`/api/portfolio-reels?limit=${limit}`);
+        const res = await fetch(`/portfolio.json?ts=${Date.now()}`);
         if(!res.ok) throw new Error('Failed to load client posts');
         const data = await res.json();
         // expected: [{ title, url, posts: [{permalink, media_type, media_url, thumbnail_url, caption, timestamp}] }]
@@ -466,62 +466,8 @@
     }
   </script>
 
-<!--
-Cloudflare Pages Function: functions/api/portfolio-reels.js
-Create a file at that path with this content. Configure env vars IG_TOKEN and IG_PROFILES.
-IG_PROFILES should be a JSON array of objects: [{"title":"RLS Token — Instagram","url":"https://www.instagram.com/official_rlstoken/","ig_user_id":"1784..."}, ...]
--->
-<script type="text/plain" data-filepath="functions/api/portfolio-reels.js">
-export const onRequestGet = async ({ request, env }) => {
-  const IG_VER = env.IG_VERSION || 'v20.0';
-  const IG_TOKEN = env.IG_TOKEN; // Long-lived token with access to all client IG accounts via the connected Pages
-  if (!IG_TOKEN) return new Response('Missing IG_TOKEN', { status: 500 });
-
-  let profiles;
-  try {
-    profiles = JSON.parse(env.IG_PROFILES || '[]');
-  } catch {
-    return new Response('Invalid IG_PROFILES', { status: 500 });
-  }
-  const url = new URL(request.url);
-  const limit = Math.max(1, Math.min(Number(url.searchParams.get('limit')) || 3, 9));
-
-  // Edge cache
-  const cache = caches.default;
-  const cacheKey = new Request(new URL(request.url), request);
-  const cached = await cache.match(cacheKey);
-  if (cached) return cached;
-
-  const out = [];
-  for (const p of profiles) {
-    if (!p.ig_user_id) continue;
-    const mediaRes = await fetch(
-      `https://graph.facebook.com/${IG_VER}/${p.ig_user_id}/media?fields=id,media_type,permalink,media_url,thumbnail_url,caption,timestamp&limit=${limit}&access_token=${IG_TOKEN}`
-    );
-    if (!mediaRes.ok) continue;
-    const mediaJson = await mediaRes.json();
-    const posts = (mediaJson.data || []).map(m => ({
-      permalink: m.permalink,
-      media_type: m.media_type,
-      media_url: m.media_url,
-      thumbnail_url: m.thumbnail_url,
-      caption: m.caption,
-      timestamp: m.timestamp
-    }));
-    out.push({ title: p.title, url: p.url, posts });
-    await new Promise(r => setTimeout(r, 120)); // polite pacing
-  }
-
-  const resp = new Response(JSON.stringify(out), {
-    headers: {
-      'content-type': 'application/json; charset=utf-8',
-      'cache-control': 'public, s-maxage=600, stale-while-revalidate=86400'
-    }
-  });
-  await cache.put(cacheKey, resp.clone());
-  return resp;
-};
-</script>
+<!-- GitHub Actions will generate /portfolio.json on a schedule using Instagram Graph API.
+Create .github/workflows/portfolio.yml with the script I will provide in chat, and add Secrets: IG_TOKEN, IG_PROFILES. -->
 <script async src="https://www.instagram.com/embed.js"></script>
 </body>
 </html>
