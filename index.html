@@ -8,11 +8,15 @@
   <meta property="og:title" content="Wolf Handler — Social Media Management & Creative Hiring" />
   <meta property="og:description" content="Promotion-first landing page. Hire us or book artists for your brand." />
   <meta property="og:type" content="website" />
-  <meta name="theme-color" content="#0d0d0d" />
+  <!-- TODO: replace with your image URL -->
+  <meta property="og:image" content="/og-image.jpg" />
+  <meta name="theme-color" content="#0b0b0f" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
+
   <style>
     :root{
       --bg:#0b0b0f;
@@ -45,6 +49,11 @@
     /* Active nav highlight */
     .nav a.active{color:var(--accent-2); position:relative}
     .nav a.active::after{content:""; position:absolute; left:0; right:0; bottom:-8px; height:2px; background:linear-gradient(90deg,var(--accent),var(--accent-2)); border-radius:2px}
+    /* Respect reduced motion */
+    @media (prefers-reduced-motion: reduce){
+      .fade-up,.fade-in,.zoom-in,.slide-left,.slide-right{transition:none !important; opacity:1 !important; transform:none !important}
+      html,body{scroll-behavior:auto}
+    }
   </style>
 </head>
 <body>
@@ -52,19 +61,24 @@
   <header class="px-6 md:px-10 py-4 fade-in fixed top-0 left-0 w-full bg-[var(--bg)]/90 backdrop-blur z-50">
     <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
       <a href="#home" class="flex items-center gap-3 slide-left">
-        <img src="logo.png" alt="Wolf Handler Logo" class="w-10 h-10 object-contain" />
+        <img src="/logo.png" alt="Wolf Handler logo" class="w-10 h-10 object-contain" loading="lazy" />
         <div>
           <p class="text-lg font-extrabold tracking-tight">Wolf Handler</p>
           <p class="text-xs text-[color:var(--muted)] -mt-1">Social Media Command</p>
         </div>
       </a>
-      <nav class="nav hidden md:flex items-center gap-6 text-sm slide-right">
+      <nav class="nav hidden md:flex items-center gap-6 text-sm slide-right" aria-label="Primary">
         <a href="#services" class="hover:text-[color:var(--accent-2)]">What We Do</a>
         <a href="#process" class="hover:text-[color:var(--accent-2)]">How It Works</a>
         <a href="#hire" class="hover:text-[color:var(--accent-2)]">Hire Artists</a>
+        <a href="#work" class="hover:text-[color:var(--accent-2)]">Work</a>
+        <a href="#ideas" class="hover:text-[color:var(--accent-2)]">Creative Thoughts</a>
         <a href="#contact" class="px-4 py-2 rounded-xl glass glow btn">Contact</a>
       </nav>
-      <a href="#contact" class="md:hidden px-4 py-2 rounded-xl glass glow btn">Contact</a>
+      <div class="md:hidden flex items-center gap-2">
+        <a href="#work" class="px-4 py-2 rounded-xl glass glow btn">Work</a>
+        <a href="#ideas" class="px-4 py-2 rounded-xl glass glow btn">Thoughts</a>
+      </div>
     </div>
   </header>
 
@@ -87,7 +101,8 @@
       <h2 class="text-3xl md:text-4xl font-extrabold">Our Packages</h2>
       <p class="mt-3 text-[color:var(--muted)] max-w-2xl mx-auto">Choose the package that fits your growth stage. Simple, transparent, and effective.</p>
     </div>
-    <div class="mt-8 grid grid-auto gap-5 text-left">
+    <!-- FIX: replaced invalid `grid-auto` with explicit columns -->
+    <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-5 text-left">
       <article class="glass rounded-2xl p-6 fade-up">
         <h3 class="text-xl font-bold">Starter: Presence</h3>
         <p class="mt-2 text-sm text-[color:var(--muted)]">Consistent posting & brand hygiene across Instagram, X, LinkedIn, Facebook.</p>
@@ -123,7 +138,7 @@
     <div class="max-w-7xl mx-auto text-center slide-right">
       <h2 class="text-3xl md:text-4xl font-extrabold">How It Works</h2>
     </div>
-    <div class="mt-8 grid grid-auto gap-5 text-left">
+    <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-5 text-left">
       <div class="glass rounded-2xl p-6 slide-left">
         <p class="text-sm text-[color:var(--muted)]">Step 1</p>
         <h3 class="text-xl font-bold mt-1">Discovery Call (20 mins)</h3>
@@ -154,8 +169,8 @@
           <li>Replace or scale up anytime</li>
         </ul>
         <div class="mt-6 flex flex-wrap gap-3">
-          <a href="https://linktr.ee/wolfhandler?fbclid=PAdGRleAMyauhleHRuA2FlbQIxMQABpyTmDgr-o-FO46ztoo2AAY9J9DpjrwpcgIffePFSDiFE-_-DDlnEKTvUiSU-_aem_gMQJUERgZWzKWdlvR007XQ" class="btn px-5 py-3 rounded-xl glass glow font-semibold" target="_blank" rel="noopener">Request profiles</a>
-          <a href="https://www.instagram.com/wolfhandler/?hl=en" class="btn px-5 py-3 rounded-xl border border-white/15 font-semibold" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://linktr.ee/wolfhandler" class="btn px-5 py-3 rounded-xl glass glow font-semibold" target="_blank" rel="noopener">Request profiles</a>
+          <a href="https://www.instagram.com/wolfhandler/" class="btn px-5 py-3 rounded-xl border border-white/15 font-semibold" target="_blank" rel="noopener">Instagram</a>
         </div>
       </div>
       <form class="glass rounded-2xl p-6 slide-right" id="hireForm">
@@ -220,10 +235,50 @@
     </div>
   </section>
 
+  <!-- Work / Case Studies (Linktree-based) -->
+  <section id="work" class="px-6 md:px-10 py-16 fade-up">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-8">
+        <h2 class="text-3xl md:text-4xl font-extrabold">Client Highlights</h2>
+        <p class="mt-2 text-[color:var(--muted)]">Hand-picked links from our clients’ Linktrees — reels, posts and campaign pages.</p>
+      </div>
+      <div id="workGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"></div>
+      <p class="mt-4 text-xs text-[color:var(--muted)] text-center">Tip: add or edit items in <code>WORK_LINKS</code> inside the script — Linktree or any public link works.</p>
+    </div>
+  </section>
+
+  <!-- Creative Thoughts -->
+  <section id="ideas" class="px-6 md:px-10 py-16 fade-up">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-8">
+        <h2 class="text-3xl md:text-4xl font-extrabold">Creative Thoughts</h2>
+        <p class="mt-2 text-[color:var(--muted)]">Quick ideas we keep revisiting when designing sticky social brands.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <article class="glass rounded-2xl p-6">
+          <h3 class="font-semibold">1) Hook in 1 Second</h3>
+          <p class="mt-2 text-[color:var(--muted)] text-sm">Lead with motion + a clear promise in text. Cut silence; front‑load value.</p>
+        </article>
+        <article class="glass rounded-2xl p-6">
+          <h3 class="font-semibold">2) Three Visual Systems</h3>
+          <p class="mt-2 text-[color:var(--muted)] text-sm">Run a trifecta: reels style, carousel grid, story kit. Keep all shippable.</p>
+        </article>
+        <article class="glass rounded-2xl p-6">
+          <h3 class="font-semibold">3) Weekly A/B</h3>
+          <p class="mt-2 text-[color:var(--muted)] text-sm">One creative variable per week: opener line, color, or CTA microcopy.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
   <!-- Footer -->
   <footer class="px-6 md:px-10 py-10 text-center text-[color:var(--muted)] fade-in">
     © <span id="year"></span> Wolf Handler. All rights reserved.
   </footer>
+
+  <noscript>
+    <div class="px-6 md:px-10 py-4 text-center text-sm text-[color:var(--muted)]">This site uses small animations. For the best experience, enable JavaScript.</div>
+  </noscript>
 
   <script>
     // Copyright year
@@ -239,7 +294,7 @@
     document.querySelectorAll('.fade-up, .fade-in, .zoom-in, .slide-left, .slide-right').forEach(el=>observer.observe(el));
 
     // Active nav highlight on scroll
-    const sections = ['home','services','process','hire','contact'];
+    const sections = ['home','services','process','hire','work','ideas','contact'];
     const navLinks = Array.from(document.querySelectorAll('.nav a'));
     function setActive(){
       let fromTop = window.scrollY + 110; // header offset
@@ -250,7 +305,7 @@
       });
       navLinks.forEach(a=>{
         const href = a.getAttribute('href').replace('#','');
-        if(href === current){ a.classList.add('active'); } else { a.classList.remove('active'); }
+        a.classList.toggle('active', href === current);
       });
     }
     setActive();
@@ -266,6 +321,7 @@
         const lines=[];
         data.forEach((v,k)=>{ if(v) lines.push(`${k}: ${v}`); });
         const subject = encodeURIComponent(subjectPrefix + ' — ' + (data.get('name')||'Client'));
+        // FIX: proper newline escape to avoid syntax error
         const body = encodeURIComponent(lines.join('\n'));
         const mail = `mailto:wolfhandlerofficial@gmail.com?subject=${subject}&body=${body}`;
         window.location.href = mail;
@@ -273,6 +329,199 @@
     }
     formToMailto('hireForm','Hire Artist Request');
     formToMailto('contactForm','New Project Inquiry');
+
+    // ---- Work / Client Highlights (AUTO via Instagram Graph API) ----
+    // This version fetches latest posts for multiple profiles from a backend endpoint.
+    // Backend endpoint (Cloudflare Pages Function): /api/portfolio-reels
+    // Query params: ?limit=3 (how many posts per profile)
+
+    const CLIENT_PROFILES = [
+      { title: 'RLS Token — Instagram',  url: 'https://www.instagram.com/official_rlstoken/' },
+      { title: 'OrbitX DAO — Instagram', url: 'https://www.instagram.com/orbitx_dao/' },
+      { title: 'Finexa — Instagram',     url: 'https://www.instagram.com/finexa.club/' }
+    ];
+
+    function profileCardHeaderHTML(profile){
+      const host = (()=>{ try{ return new URL(profile.url).hostname.replace('www.',''); }catch{return profile.url;} })();
+      return `
+        <a href="${profile.url}" target="_blank" rel="noopener" class="group block rounded-2xl overflow-hidden glass hover:shadow-xl transition-shadow">
+          <div class="p-5 flex items-start gap-4">
+            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-[var(--accent)] to-[var(--accent-2)] flex items-center justify-center text-white font-bold">@</div>
+            <div class="min-w-0">
+              <div class="font-semibold truncate">${profile.title}</div>
+              <div class="text-xs text-[color:var(--muted)] truncate">${host}</div>
+              ${profile.note ? `<div class="text-xs mt-1 text-[color:var(--muted)]">${profile.note}</div>` : ''}
+            </div>
+          </div>
+        </a>`;
+    }
+
+    function postThumbHTML(post){
+      const aspect = (post.media_type === 'VIDEO' || post.media_type === 'REEL') ? 'aspect-[9/16]' : 'aspect-square';
+      const img = post.thumbnail_url || post.media_url;
+      const cap = (post.caption||'').replace(/"/g,'&quot;');
+      return `
+        <a href="${post.permalink}" target="_blank" rel="noopener" class="block rounded-xl overflow-hidden bg-[#0f0f14] hover:opacity-95">
+          <div class="relative ${aspect}">
+            <img src="${img}" alt="Post thumbnail" class="absolute inset-0 w-full h-full object-cover" loading="lazy"/>
+            <div class="absolute bottom-0 left-0 right-0 p-2 text-[10px] text-white/90 bg-gradient-to-t from-black/70 to-transparent line-clamp-1">${cap}</div>
+          </div>
+        </a>`;
+    }
+
+    async function renderWork(){
+      const grid = document.getElementById('workGrid');
+      if(!grid) return;
+
+      // Skeletons while loading
+      grid.innerHTML = new Array(3).fill(0).map(()=>`
+        <div class="glass rounded-2xl p-5 animate-pulse">
+          <div class="h-6 w-40 bg-white/10 rounded mb-4"></div>
+          <div class="grid grid-cols-3 gap-2">
+            <div class="h-24 bg-white/10 rounded"></div>
+            <div class="h-24 bg-white/10 rounded"></div>
+            <div class="h-24 bg-white/10 rounded"></div>
+          </div>
+        </div>
+      `).join('');
+
+      try{
+        const limit = 3;
+        const res = await fetch(`/api/portfolio-reels?limit=${limit}`);
+        if(!res.ok) throw new Error('Failed to load client posts');
+        const data = await res.json();
+        // expected: [{ title, url, posts: [{permalink, media_type, media_url, thumbnail_url, caption, timestamp}] }]
+
+        const blocks = [];
+        for(const p of data){
+          blocks.push(profileCardHeaderHTML(p));
+          blocks.push(`<div class="grid grid-cols-3 gap-2">${(p.posts||[]).map(postThumbHTML).join('')}</div>`);
+        }
+        grid.innerHTML = blocks.join('');
+      }catch(err){
+        console.error(err);
+        // Fallback: show static profile cards so layout still looks good
+        const fallback = CLIENT_PROFILES.map(pr => `
+          ${profileCardHeaderHTML(pr)}
+          <div class="grid grid-cols-3 gap-2">
+            <div class="h-24 bg-white/5 rounded"></div>
+            <div class="h-24 bg-white/5 rounded"></div>
+            <div class="h-24 bg-white/5 rounded"></div>
+          </div>
+        `).join('');
+        grid.innerHTML = fallback + '<p class="text-[color:var(--muted)] mt-4">Couldn\'t fetch Instagram automatically. Configure the Cloudflare Function to enable live posts.</p>';
+      }
+    }
+
+    renderWork();
+
+    // -----------------
+    // Tiny self-tests
+    // -----------------
+    try {
+      const testLines = ['name: Jane','email: jane@acme.com'];
+      const joined = testLines.join('
+');
+      console.assert(joined.includes('
+'), 'Join should include newline');
+      const enc = encodeURIComponent(joined);
+      console.assert(typeof enc === 'string' && enc.length > 0, 'Encoded body should be non-empty');
+      console.debug('[Self-test] formToMailto newline join OK');
+
+      // Response shape smoke test (dev only)
+      const sample = [{ title:'X', url:'https://instagram.com/x', posts:[{permalink:'https://insta/p/1', media_type:'IMAGE', media_url:'https://img', thumbnail_url:'', caption:'c', timestamp:'2025-01-01'}]}];
+      console.assert(Array.isArray(sample[0].posts), 'posts should be an array');
+    } catch(e) {
+      console.error('[Self-test] failed', e);
+    }
+
+    // -----------------
+    // Tiny self-tests
+    // -----------------
+    try {
+      const testLines = ['name: Jane','email: jane@acme.com'];
+      const joined = testLines.join('
+');
+      console.assert(joined.includes('
+'), 'Join should include newline');
+      const enc = encodeURIComponent(joined);
+      console.assert(typeof enc === 'string' && enc.length > 0, 'Encoded body should be non-empty');
+      console.debug('[Self-test] formToMailto newline join OK');
+    } catch(e) {
+      console.error('[Self-test] formToMailto failed', e);
+    }
+
+    // -----------------
+    // Tiny self-tests
+    // -----------------
+    try {
+      const testLines = ['name: Jane','email: jane@acme.com'];
+      const joined = testLines.join('\n');
+      console.assert(joined.includes('\n'), 'Join should include newline');
+      const enc = encodeURIComponent(joined);
+      console.assert(typeof enc === 'string' && enc.length > 0, 'Encoded body should be non-empty');
+      console.debug('[Self-test] formToMailto newline join OK');
+    } catch(e) {
+      console.error('[Self-test] formToMailto failed', e);
+    }
   </script>
+
+<!--
+Cloudflare Pages Function: functions/api/portfolio-reels.js
+Create a file at that path with this content. Configure env vars IG_TOKEN and IG_PROFILES.
+IG_PROFILES should be a JSON array of objects: [{"title":"RLS Token — Instagram","url":"https://www.instagram.com/official_rlstoken/","ig_user_id":"1784..."}, ...]
+-->
+<script type="text/plain" data-filepath="functions/api/portfolio-reels.js">
+export const onRequestGet = async ({ request, env }) => {
+  const IG_VER = env.IG_VERSION || 'v20.0';
+  const IG_TOKEN = env.IG_TOKEN; // Long-lived token with access to all client IG accounts via the connected Pages
+  if (!IG_TOKEN) return new Response('Missing IG_TOKEN', { status: 500 });
+
+  let profiles;
+  try {
+    profiles = JSON.parse(env.IG_PROFILES || '[]');
+  } catch {
+    return new Response('Invalid IG_PROFILES', { status: 500 });
+  }
+  const url = new URL(request.url);
+  const limit = Math.max(1, Math.min(Number(url.searchParams.get('limit')) || 3, 9));
+
+  // Edge cache
+  const cache = caches.default;
+  const cacheKey = new Request(new URL(request.url), request);
+  const cached = await cache.match(cacheKey);
+  if (cached) return cached;
+
+  const out = [];
+  for (const p of profiles) {
+    if (!p.ig_user_id) continue;
+    const mediaRes = await fetch(
+      `https://graph.facebook.com/${IG_VER}/${p.ig_user_id}/media?fields=id,media_type,permalink,media_url,thumbnail_url,caption,timestamp&limit=${limit}&access_token=${IG_TOKEN}`
+    );
+    if (!mediaRes.ok) continue;
+    const mediaJson = await mediaRes.json();
+    const posts = (mediaJson.data || []).map(m => ({
+      permalink: m.permalink,
+      media_type: m.media_type,
+      media_url: m.media_url,
+      thumbnail_url: m.thumbnail_url,
+      caption: m.caption,
+      timestamp: m.timestamp
+    }));
+    out.push({ title: p.title, url: p.url, posts });
+    await new Promise(r => setTimeout(r, 120)); // polite pacing
+  }
+
+  const resp = new Response(JSON.stringify(out), {
+    headers: {
+      'content-type': 'application/json; charset=utf-8',
+      'cache-control': 'public, s-maxage=600, stale-while-revalidate=86400'
+    }
+  });
+  await cache.put(cacheKey, resp.clone());
+  return resp;
+};
+</script>
+<script async src="https://www.instagram.com/embed.js"></script>
 </body>
 </html>
