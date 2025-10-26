@@ -1,0 +1,80 @@
+name: Build portfolio.json (Instagram)
+
+on:
+  schedule:
+    - cron: "*/120 * * * *"   # every 2 hours
+  workflow_dispatch: {}       # allow manual run
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Make data dir
+        run: mkdir -p ./.data
+
+      - name: Fetch Instagram posts for each profile
+        env:
+          IG_TOKEN: ${{ secrets.IG_TOKEN }}
+          IG_PROFILES: ${{ secrets.IG_PROFILES }}
+          IG_VERSION: v20.0
+        run: |
+          node <<'JS'
+          const fs = require('fs');
+          const fetch = require('node-fetch');
+
+          const IG_TOKEN = process.env.IG_TOKEN;
+          const IG_VERSION = process.env.IG_VERSION || 'v20.0';
+
+          if(!IG_TOKEN){ console.error('Missing IG_TOKEN'); process.exit(1); }
+
+          let profiles = [];
+          try { profiles = JSON.parse(process.env.IG_PROFILES || '[]'); }
+          catch(e){ console.error('Invalid IG_PROFILES JSON'); process.exit(1); }
+
+          async function getLatestPosts(ig_user_id, limit=3){
+            const url = `https://graph.facebook.com/${IG_VERSION}/${ig_user_id}/media?fields=id,media_type,permalink,media_url,thumbnail_url,caption,timestamp&limit=${limit}&access_token=${IG_TOKEN}`;
+            const res = await fetch(url);
+            if(!res.ok) throw new Error(`Media fetch failed: ${await res.text()}`);
+            const j = await res.json();
+            return (j.data||[]).map(m => ({
+              permalink: m.permalink,
+              media_type: m.media_type,
+              media_url: m.media_url,
+              thumbnail_url: m.thumbnail_url,
+              caption: m.caption,
+              timestamp: m.timestamp
+            }));
+          }
+
+          (async ()=>{
+            const out = [];
+            for(const p of profiles){
+              if(!p.ig_user_id){ continue; }
+              try{
+                const posts = await getLatestPosts(p.ig_user_id, 3);
+                out.push({ title: p.title, url: p.url, posts });
+                await new Promise(r => setTimeout(r, 120));
+              }catch(e){
+                console.error('Profile failed', p.title, e.message);
+                out.push({ title: p.title, url: p.url, posts: [] });
+              }
+            }
+            fs.writeFileSync('./portfolio.json', JSON.stringify(out, null, 2));
+            console.log('Wrote portfolio.json with', out.length, 'profiles');
+          })().catch(e => { console.error(e); process.exit(1); });
+          JS
+
+      - name: Commit portfolio.json
+        run: |
+          if ! git diff --quiet portfolio.json; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add portfolio.json
+            git commit -m "chore: update portfolio.json"
+            git push
+          else
+            echo "No changes in portfolio.json"
+          fi
